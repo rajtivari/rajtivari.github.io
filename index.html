@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raj Tivari Kokil Tivari — Student Developer</title>
+  <meta name="description" content="Raj Tivari — student developer from Bangalore building web applications, currently preparing to start a Computer Science Engineering degree with a growing focus on cybersecurity.">
+  <meta name="keywords" content="Raj Tivari, student developer, web developer, computer science engineering, Bangalore, portfolio">
+  <meta name="author" content="Raj Tivari Kokil Tivari">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Raj Tivari — Student Developer">
+  <meta property="og:description" content="Student developer from Bangalore building web applications and preparing to start a CSE degree, with a growing interest in cybersecurity.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%232F6FFF%22>&gt;_</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-bracket">&lt;</span>Raj<span class="nav-logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+        <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+        <a href="#education" class="nav-link" data-section="education">Education</a>
+        <a href="#resume" class="nav-link" data-section="resume">Resume</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">// currently building</p>
+        <h1 class="hero-name">Raj Tivari<br>Kokil Tivari</h1>
+        <p class="hero-title">Student Developer <span class="dot">·</span> Web Developer</p>
+        <p class="hero-intro">
+          A student developer who enjoys building practical web applications and learning
+          new technologies. Completed 2nd PUC and joining Computer Science Engineering in 2026,
+          with a growing interest in software development and cybersecurity.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Projects</a>
+          <a href="assets/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-terminal" data-reveal>
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+            <span class="terminal-title">raj@dev:~</span>
+          </div>
+          <div class="terminal-body" id="terminalBody" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <p class="eyebrow">// about</p>
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-grid">
+        <div class="about-text" data-reveal>
+          <p>
+            I'm Raj, a student developer based in Bangalore, Karnataka. I recently completed my
+            2nd PUC and I'm preparing to begin a Computer Science Engineering degree in 2026.
+            Alongside that, I've been teaching myself web development — building things with
+            HTML, CSS, JavaScript, and React, and getting comfortable with tools like Git and
+            Firebase.
+          </p>
+          <p>
+            I'm currently learning C and C++ more deeply and exploring the fundamentals of
+            cybersecurity, which is shaping up to be a direction I want to specialize in during
+            my degree. My goal for the next few years is simple: keep building real projects,
+            get better at software engineering fundamentals, and earn an internship where I can
+            learn from working developers.
+          </p>
+        </div>
+
+        <div class="about-facts" data-reveal>
+          <div class="fact-card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+              <span class="fact-label">Education</span>
+              <span class="fact-value">Computer Science Engineering — starting 2026</span>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <span class="fact-label">Based in</span>
+              <span class="fact-value">Bangalore, Karnataka, India</span>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <span class="fact-label">Currently learning</span>
+              <span class="fact-value">C / C++ fundamentals, cybersecurity basics</span>
+            </div>
+          </div>
+          <div class="fact-card">
+            <i class="fa-solid fa-bullseye"></i>
+            <div>
+              <span class="fact-label">Goal</span>
+              <span class="fact-value">Land a software development internship</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section section-alt" id="skills">
+    <div class="section-inner">
+      <p class="eyebrow">// skills</p>
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills-grid">
+        <div class="skill-category" data-reveal>
+          <h3><i class="fa-solid fa-terminal"></i> Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>C</li>
+            <li>C++</li>
+          </ul>
+        </div>
+
+        <div class="skill-category" data-reveal>
+          <h3><i class="fa-solid fa-layer-group"></i> Frameworks &amp; Technologies</h3>
+          <ul class="skill-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Firebase</li>
+          </ul>
+        </div>
+
+        <div class="skill-category" data-reveal>
+          <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools</h3>
+          <ul class="skill-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>VS Code</li>
+            <li>Replit</li>
+          </ul>
+        </div>
+
+        <div class="skill-category" data-reveal>
+          <h3><i class="fa-solid fa-arrow-trend-up"></i> Focus areas</h3>
+          <ul class="skill-list">
+            <li>Web development</li>
+            <li>Responsive design</li>
+            <li>Cybersecurity (learning)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <p class="eyebrow">// projects</p>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        Project write-ups are on the way — this section is set up and ready for them.
+      </p>
+
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project cards are rendered by script.js from the PROJECTS array -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Project modal -->
+  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close project details">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- ===== EDUCATION ===== -->
+  <section class="section section-alt" id="education">
+    <div class="section-inner">
+      <p class="eyebrow">// education</p>
+      <h2 class="section-title">Education</h2>
+
+      <div class="timeline">
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2026 — Ongoing</span>
+            <h3>Computer Science Engineering</h3>
+            <p class="timeline-institution">[Institution to be added]</p>
+            <p>Focus areas: Computer Science, Cybersecurity</p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-marker"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">Completed</span>
+            <h3>2nd PUC (Pre-University Course)</h3>
+            <p>Completed prior to starting Computer Science Engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESUME ===== -->
+  <section class="section" id="resume">
+    <div class="section-inner">
+      <p class="eyebrow">// resume</p>
+      <h2 class="section-title">Resume</h2>
+      <p class="section-subtitle">
+        Download a copy of my resume or view it directly in your browser.
+      </p>
+
+      <div class="resume-box" data-reveal>
+        <i class="fa-solid fa-file-lines"></i>
+        <div class="resume-actions">
+          <a href="assets/resume.pdf" class="btn btn-primary" download>
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="assets/resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section section-alt" id="contact">
+    <div class="section-inner">
+      <p class="eyebrow">// contact</p>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">
+        Have an opportunity or just want to say hi? I'd love to hear from you.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-links" data-reveal>
+          <a href="mailto:tivariraj424@gmail.com" class="contact-link">
+            <i class="fa-solid fa-envelope"></i>
+            <span>tivariraj424@gmail.com</span>
+          </a>
+          <span class="contact-link contact-link-disabled" title="GitHub link to be added">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub — link coming soon</span>
+          </span>
+          <span class="contact-link contact-link-disabled" title="LinkedIn link to be added">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn — link coming soon</span>
+          </span>
+        </div>
+
+        <form class="contact-form" id="contactForm" data-reveal>
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Your Email</label>
+            <input type="email" id="cf-email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p class="form-note">This opens your email client with the message pre-filled — this site has no backend.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo"><span class="nav-logo-bracket">&lt;</span>Raj<span class="nav-logo-bracket">/&gt;</span></span>
+        <p>Student developer, building one project at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:tivariraj424@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <span class="footer-link-disabled" aria-label="GitHub link coming soon"><i class="fa-brands fa-github"></i></span>
+        <span class="footer-link-disabled" aria-label="LinkedIn link coming soon"><i class="fa-brands fa-linkedin"></i></span>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Raj Tivari Kokil Tivari. All rights reserved.</p>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
