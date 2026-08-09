@@ -1,297 +1,270 @@
-/* =========================================================
-   PROJECT DATA
-   ---------------------------------------------------------
-   Add your real projects here. Each object becomes a card.
-   Set "featured: true" on your strongest project to give it
-   a larger card. Leave "github" / "demo" empty ('') if you
-   don't have a link yet — the button will show as disabled
-   instead of linking anywhere fake.
-
-   Example:
-   {
-     name: "Project Name",
-     description: "One or two sentence summary of what it is.",
-     problem: "What problem it solves.",
-     built: "What you personally built.",
-     tech: ["HTML", "CSS", "JavaScript"],
-     github: "https://github.com/username/repo",
-     demo: "https://your-demo-link.com",
-     image: "assets/project-1.jpg",
-     overview: "Longer overview for the modal.",
-     features: ["Feature one", "Feature two"],
-     challenges: "A real challenge you ran into.",
-     learned: "What you learned building it.",
-     featured: true
-   }
-========================================================= */
-const PROJECTS = [
-  // Add project objects here once ready.
-];
-
-/* =========================================================
-   TERMINAL BOOT SEQUENCE
-========================================================= */
-const terminalLines = [
-  { text: "whoami", type: "prompt" },
-  { text: "Raj Tivari Kokil Tivari", type: "output" },
-  { text: "cat status.txt", type: "prompt" },
-  { text: "> Preparing to start Computer Science Engineering, 2026", type: "output" },
-  { text: "> Building web apps with HTML, CSS, JS, React", type: "output" },
-  { text: "> Learning C / C++ and cybersecurity fundamentals", type: "output" },
-  { text: "cat focus.txt", type: "prompt" },
-  { text: "> Looking for a software development internship", type: "output" },
-];
-
-function typeTerminal(){
-  const el = document.getElementById("terminalBody");
-  if(!el) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if(reduceMotion){
-    el.innerHTML = terminalLines.map(l =>
-      l.type === "prompt"
-        ? `<span class="line-prompt">$ ${l.text}</span>`
-        : `<span class="line-comment">${l.text}</span>`
-    ).join("\n");
-    return;
-  }
-
-  let lineIndex = 0;
-  let charIndex = 0;
-  let buffer = "";
-
-  function typeChar(){
-    if(lineIndex >= terminalLines.length){
-      el.innerHTML = buffer + '<span class="terminal-cursor"></span>';
-      return;
+/*
+  EDIT THIS OBJECT when you are ready to personalize the portfolio.
+  Keep empty strings empty until you have real links or files.
+*/
+const PORTFOLIO_DATA = {
+  name: "Raj Tivari",
+  fullName: "Raj Tivari Kokil Tivari",
+  location: "Bangalore, Karnataka, India",
+  title: "Student Developer | Web Developer",
+  email: "tivariraj424@gmail.com",
+  education: {
+    degree: "Computer Science Engineering",
+    year: "2026",
+    focus: "Computer Science, Cybersecurity",
+    college: "ADD_LATER"
+  },
+  skills: [
+    { label: "C / C++", group: "Languages", number: "01" },
+    { label: "Python", group: "Languages", number: "02" },
+    { label: "HTML / CSS", group: "Web", number: "03" },
+    { label: "JavaScript", group: "Web", number: "04" },
+    { label: "React", group: "Web", number: "05" },
+    { label: "Firebase", group: "Web", number: "06" },
+    { label: "Git / GitHub", group: "Tools", number: "07" },
+    { label: "VS Code / Replit", group: "Tools", number: "08" }
+  ],
+  projects: [
+    {
+      title: "Project title coming soon",
+      eyebrow: "01 / IN THE WORKSHOP",
+      description: "A space reserved for a practical project built while learning.",
+      detail: "This editable case study is ready for Raj to replace with a future non-trading project: the problem, the build decisions, what changed, and what was learned.",
+      technologies: ["Technology", "Technology"],
+      image: "",
+      github: "",
+      demo: ""
+    },
+    {
+      title: "Project title coming soon",
+      eyebrow: "02 / IN THE WORKSHOP",
+      description: "A second canvas for a thoughtful web or software build.",
+      detail: "Add an image, a short narrative, technologies, GitHub URL and Live Demo URL in script.js when ready.",
+      technologies: ["Technology", "Technology"],
+      image: "",
+      github: "",
+      demo: ""
+    },
+    {
+      title: "Project title coming soon",
+      eyebrow: "03 / IN THE WORKSHOP",
+      description: "A third slot for the next idea worth shipping.",
+      detail: "Keep this entry honest and specific. The modal is already wired for a full case study.",
+      technologies: ["Technology", "Technology"],
+      image: "",
+      github: "",
+      demo: ""
     }
+  ],
+  certificate: {
+    title: "C Language / C Programming Certificate",
+    issuer: "Details to be added later.",
+    image: ""
+  },
+  socials: {
+    github: "",
+    linkedin: "",
+    instagram: ""
+  },
+  resume: ""
+};
 
-    const line = terminalLines[lineIndex];
-    const prefix = line.type === "prompt" ? "$ " : "";
-    const full = prefix + line.text;
-    const cls = line.type === "prompt" ? "line-prompt" : "line-comment";
+const $ = (selector, parent = document) => parent.querySelector(selector);
+const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
 
-    if(charIndex <= full.length){
-      const partial = full.slice(0, charIndex);
-      el.innerHTML = buffer + `<span class="${cls}">${partial}</span>` + '<span class="terminal-cursor"></span>';
-      charIndex++;
-      setTimeout(typeChar, line.type === "prompt" ? 45 : 12);
-    } else {
-      buffer += `<span class="${cls}">${full}</span>\n`;
-      lineIndex++;
-      charIndex = 0;
-      setTimeout(typeChar, 220);
-    }
-  }
-
-  typeChar();
-}
-
-/* =========================================================
-   MOBILE NAV
-========================================================= */
-function initNav(){
-  const toggle = document.getElementById("navToggle");
-  const links = document.getElementById("navLinks");
-
-  toggle.addEventListener("click", () => {
-    const isOpen = links.classList.toggle("open");
-    toggle.classList.toggle("open", isOpen);
-    toggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  links.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-      links.classList.remove("open");
-      toggle.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-  });
-}
-
-/* =========================================================
-   ACTIVE SECTION INDICATOR
-========================================================= */
-function initActiveSection(){
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const id = entry.target.getAttribute("id");
-        navLinks.forEach(link => {
-          link.classList.toggle("active", link.dataset.section === id);
-        });
-      }
-    });
-  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-
-  sections.forEach(section => observer.observe(section));
-}
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-function initReveal(){
-  const items = document.querySelectorAll("[data-reveal]");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  items.forEach(item => observer.observe(item));
-}
-
-/* =========================================================
-   NAVBAR BACKGROUND + BACK TO TOP
-========================================================= */
-function initScrollUI(){
-  const backToTop = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    backToTop.classList.toggle("visible", window.scrollY > 500);
-  });
-
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-/* =========================================================
-   PROJECTS RENDER
-========================================================= */
-function linkButton(url, label, iconClass){
-  if(url && url.trim() !== ""){
-    return `<a href="${url}" class="btn btn-secondary" target="_blank" rel="noopener"><i class="${iconClass}"></i> ${label}</a>`;
-  }
-  return `<span class="btn btn-secondary" disabled><i class="${iconClass}"></i> ${label}</span>`;
-}
-
-function renderProjects(){
-  const grid = document.getElementById("projectsGrid");
-
-  if(PROJECTS.length === 0){
-    grid.innerHTML = [1,2,3].map(n => `
-      <div class="project-card is-placeholder">
-        <div class="placeholder-body">
-          <i class="fa-solid fa-code-branch"></i>
-          <h3>Project ${n} — coming soon</h3>
-          <p>Add this project's details to the PROJECTS array in script.js.</p>
-        </div>
-      </div>
+function renderSkills(activeGroup = "All") {
+  const grid = $("#skills-grid");
+  grid.innerHTML = PORTFOLIO_DATA.skills
+    .filter((skill) => activeGroup === "All" || skill.group === activeGroup)
+    .map((skill) => `
+      <article class="skill-card glass magnetic">
+        <div class="skill-top"><span>${skill.number}</span><span class="skill-arrow">↗</span></div>
+        <h3>${skill.label}</h3>
+        <p>${skill.group}</p>
+      </article>
     `).join("");
-    return;
-  }
+  bindMagneticElements();
+}
 
-  grid.innerHTML = PROJECTS.map((p, i) => `
-    <div class="project-card ${p.featured ? "is-featured" : ""}" data-index="${i}">
-      <div class="project-image">
-        ${p.image ? `<img src="${p.image}" alt="${p.name} screenshot">` : `<i class="fa-solid fa-image"></i>`}
+function renderProjects() {
+  $("#projects-grid").innerHTML = PORTFOLIO_DATA.projects.map((project, index) => `
+    <button class="project-card glass magnetic" type="button" data-project-index="${index}">
+      <div class="project-art">
+        <span>${project.image ? `<img src="${project.image}" alt="${project.title}" />` : "[ image / add later ]"}</span>
+        <b class="project-index">0${index + 1}</b>
       </div>
-      <div class="project-body">
-        <h3>${p.name}</h3>
-        <p>${p.description || ""}</p>
-        <div class="project-tags">
-          ${(p.tech || []).map(t => `<span>${t}</span>`).join("")}
-        </div>
-        <div class="project-links">
-          ${linkButton(p.github, "GitHub", "fa-brands fa-github")}
-          ${linkButton(p.demo, "Live Demo", "fa-solid fa-arrow-up-right-from-square")}
-        </div>
+      <div class="project-copy">
+        <p class="project-eyebrow">${project.eyebrow}</p>
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="project-open"><span>Open case study</span><span>↗</span></div>
       </div>
-    </div>
+    </button>
   `).join("");
+  $$("[data-project-index]").forEach((card) => {
+    card.addEventListener("click", () => openProjectModal(PORTFOLIO_DATA.projects[card.dataset.projectIndex]));
+  });
+  bindMagneticElements();
+}
 
-  grid.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("click", () => openModal(PROJECTS[card.dataset.index]));
+function renderEditableData() {
+  $("#education-degree").textContent = PORTFOLIO_DATA.education.degree;
+  $("#education-year").textContent = PORTFOLIO_DATA.education.year;
+  $("#education-focus").textContent = PORTFOLIO_DATA.education.focus;
+  $("#education-college").textContent = PORTFOLIO_DATA.education.college;
+  $("#certificate-title").textContent = PORTFOLIO_DATA.certificate.title;
+  $("#certificate-issuer").textContent = PORTFOLIO_DATA.certificate.issuer;
+  $("#certificate-modal-title").textContent = PORTFOLIO_DATA.certificate.title;
+  $("#email-text").textContent = PORTFOLIO_DATA.email;
+  $("#email-link").href = `mailto:${PORTFOLIO_DATA.email}`;
+}
+
+function renderFilters() {
+  const groups = ["All", "Languages", "Web", "Tools"];
+  $("#skill-filters").innerHTML = groups.map((group) => `<button class="filter-button ${group === "All" ? "active" : ""}" type="button" data-filter="${group}">${group}</button>`).join("");
+  $$(".filter-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      $$(".filter-button").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      renderSkills(button.dataset.filter);
+    });
   });
 }
 
-/* =========================================================
-   PROJECT MODAL
-========================================================= */
-function openModal(p){
-  const overlay = document.getElementById("projectModal");
-  const content = document.getElementById("modalContent");
-
-  content.innerHTML = `
-    <h3 id="modalTitle">${p.name}</h3>
-    <div class="modal-tags project-tags">${(p.tech || []).map(t => `<span>${t}</span>`).join("")}</div>
-
-    <h4>Overview</h4>
-    <p>${p.overview || p.description || ""}</p>
-
-    ${p.features && p.features.length ? `
-      <h4>Features</h4>
-      <ul>${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
-    ` : ""}
-
-    ${p.built ? `<h4>What I Built</h4><p>${p.built}</p>` : ""}
-    ${p.challenges ? `<h4>Challenges</h4><p>${p.challenges}</p>` : ""}
-    ${p.learned ? `<h4>What I Learned</h4><p>${p.learned}</p>` : ""}
-
-    <div class="project-links">
-      ${linkButton(p.github, "GitHub", "fa-brands fa-github")}
-      ${linkButton(p.demo, "Live Demo", "fa-solid fa-arrow-up-right-from-square")}
-    </div>
-  `;
-
-  overlay.hidden = false;
-  document.body.style.overflow = "hidden";
+function renderSocials() {
+  const socials = [
+    ["GitHub", PORTFOLIO_DATA.socials.github],
+    ["LinkedIn", PORTFOLIO_DATA.socials.linkedin],
+    ["Instagram", PORTFOLIO_DATA.socials.instagram]
+  ];
+  $("#social-links").innerHTML = socials.map(([label, url]) => `
+    <a class="${url ? "" : "disabled"}" href="${url || "#"}" ${url ? 'target="_blank" rel="noreferrer"' : 'aria-disabled="true"'}>${label} ${url ? "↗" : "<small>(soon)</small>"}</a>
+  `).join("");
+  $$(".social-links a.disabled").forEach((link) => link.addEventListener("click", (event) => event.preventDefault()));
 }
 
-function closeModal(){
-  const overlay = document.getElementById("projectModal");
-  overlay.hidden = true;
-  document.body.style.overflow = "";
+function openProjectModal(project) {
+  $("#project-modal-eyebrow").textContent = project.eyebrow;
+  $("#project-modal-title").textContent = project.title;
+  $("#project-modal-detail").textContent = project.detail;
+  $("#project-modal-tags").innerHTML = project.technologies.map((tag) => `<span>${tag}</span>`).join("");
+  setModalLink($("#modal-github"), project.github, "GitHub");
+  setModalLink($("#modal-demo"), project.demo, "Live demo");
+  $("#project-modal").hidden = false;
+  document.body.classList.add("menu-open");
 }
 
-function initModal(){
-  document.getElementById("modalClose").addEventListener("click", closeModal);
-  document.getElementById("projectModal").addEventListener("click", (e) => {
-    if(e.target.id === "projectModal") closeModal();
+function setModalLink(link, url, label) {
+  link.textContent = `${label} ${url ? "↗" : "(add later)"}`;
+  link.href = url || "#";
+  link.classList.toggle("disabled-link", !url);
+  link.onclick = (event) => { if (!url) event.preventDefault(); };
+}
+
+function closeModals() {
+  $$(".modal-backdrop").forEach((modal) => { modal.hidden = true; });
+  document.body.classList.remove("menu-open");
+}
+
+function setupNavigation() {
+  const header = $("#site-header");
+  window.addEventListener("scroll", () => header.classList.toggle("scrolled", window.scrollY > 20), { passive: true });
+  const mobileMenu = $("#mobile-menu");
+  const openMenu = () => { mobileMenu.classList.add("active"); mobileMenu.setAttribute("aria-hidden", "false"); $("#menu-toggle").setAttribute("aria-expanded", "true"); document.body.classList.add("menu-open"); };
+  const closeMenu = () => { mobileMenu.classList.remove("active"); mobileMenu.setAttribute("aria-hidden", "true"); $("#menu-toggle").setAttribute("aria-expanded", "false"); document.body.classList.remove("menu-open"); };
+  $("#menu-toggle").addEventListener("click", openMenu);
+  $("#menu-close").addEventListener("click", closeMenu);
+  $$("#mobile-menu a").forEach((link) => link.addEventListener("click", closeMenu));
+  $$("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModals));
+  $$(".modal-backdrop").forEach((backdrop) => backdrop.addEventListener("click", (event) => { if (event.target === backdrop) closeModals(); }));
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") { closeMenu(); closeModals(); } });
+}
+
+function setupContactForm() {
+  const form = $("#contact-form");
+  const success = $("#success-message");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = new FormData(form);
+    const subject = encodeURIComponent(values.get("subject"));
+    const message = encodeURIComponent(values.get("message"));
+    window.location.href = `mailto:${PORTFOLIO_DATA.email}?subject=${subject}&body=${message}`;
+    form.hidden = true;
+    success.hidden = false;
   });
-  document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape") closeModal();
+  $("#reset-message").addEventListener("click", () => { form.reset(); form.hidden = false; success.hidden = true; });
+}
+
+function setupScrollReveal() {
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+  $$(".reveal-section").forEach((section) => observer.observe(section));
+  setTimeout(() => $$(".hero .reveal").forEach((item) => item.classList.add("is-visible")), 80);
+}
+
+function setupTyping() {
+  const target = $("#typed-code");
+  const text = "<build future />";
+  let index = 0;
+  const timer = setInterval(() => {
+    target.textContent = text.slice(0, index + 1);
+    index += 1;
+    if (index >= text.length) clearInterval(timer);
+  }, 90);
+}
+
+function bindMagneticElements() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+  $$(".magnetic").forEach((element) => {
+    if (element.dataset.magneticBound) return;
+    element.dataset.magneticBound = "true";
+    element.addEventListener("mousemove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = (event.clientX - rect.left - rect.width / 2) * .08;
+      const y = (event.clientY - rect.top - rect.height / 2) * .08;
+      element.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    element.addEventListener("mouseleave", () => { element.style.transform = ""; });
   });
 }
 
-/* =========================================================
-   CONTACT FORM (mailto — no backend on GitHub Pages)
-========================================================= */
-function initContactForm(){
-  const form = document.getElementById("contactForm");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("cf-name").value;
-    const email = document.getElementById("cf-email").value;
-    const message = document.getElementById("cf-message").value;
-
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-
-    window.location.href = `mailto:tivariraj424@gmail.com?subject=${subject}&body=${body}`;
+function setupCursor() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+  document.body.classList.add("has-cursor");
+  const dot = $(".cursor-dot");
+  const ring = $(".cursor-ring");
+  window.addEventListener("mousemove", (event) => {
+    dot.style.left = `${event.clientX - 2}px`;
+    dot.style.top = `${event.clientY - 2}px`;
+    ring.style.left = `${event.clientX}px`;
+    ring.style.top = `${event.clientY}px`;
+  });
+  document.addEventListener("mouseover", (event) => {
+    if (event.target.closest("a, button, input, textarea")) document.body.classList.add("cursor-hover");
+  });
+  document.addEventListener("mouseout", (event) => {
+    if (event.target.closest("a, button, input, textarea")) document.body.classList.remove("cursor-hover");
   });
 }
 
-/* =========================================================
-   INIT
-========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  typeTerminal();
-  initNav();
-  initActiveSection();
-  initReveal();
-  initScrollUI();
+  renderEditableData();
+  renderFilters();
+  renderSkills();
   renderProjects();
-  initModal();
-  initContactForm();
+  renderSocials();
+  setupNavigation();
+  setupContactForm();
+  setupScrollReveal();
+  setupTyping();
+  bindMagneticElements();
+  setupCursor();
+  $("#certificate-button").addEventListener("click", () => { $("#certificate-modal").hidden = false; document.body.classList.add("menu-open"); });
+  $("#copyright-year").textContent = new Date().getFullYear();
 });
