@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root{
+  /* board */
+  --bg:#05070c;
+  --bg-elevated:#0a0e16;
+  --bg-elevated-2:#0e131d;
+  --line:rgba(0,229,255,0.14);
+  --line-soft:rgba(0,229,255,0.07);
+
+  /* neon system — two colors, fixed meaning. cyan = built/stable. magenta = active/next. */
+  --cyan:#00e5ff;
+  --cyan-dim:rgba(0,229,255,0.5);
+  --cyan-soft:rgba(0,229,255,0.1);
+  --magenta:#ff2ec4;
+  --magenta-dim:rgba(255,46,196,0.5);
+  --magenta-soft:rgba(255,46,196,0.1);
+
+  --text:#eaf6ff;
+  --text-dim:#8ba3b8;
+  --text-faint:#4c5c6c;
+
+  --f-display:'Chakra Petch', sans-serif;
+  --f-mono:'JetBrains Mono', monospace;
+  --f-body:'IBM Plex Sans', sans-serif;
+
+  --glow-cyan:0 0 6px rgba(0,229,255,0.55), 0 0 26px rgba(0,229,255,0.25);
+  --glow-magenta:0 0 6px rgba(255,46,196,0.6), 0 0 26px rgba(255,46,196,0.28);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--f-body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* faint PCB grid texture across the whole page */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:0.5;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
+}
+
+/* scanline texture */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.018) 0px,
+    rgba(255,255,255,0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity:0.6;
+}
+
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+button{font:inherit; cursor:pointer; background:none; border:none; color:inherit;}
+
+::selection{background:var(--magenta); color:#05070c;}
+
+:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; }
+
+.wrap{ max-width:1220px; margin:0 auto; padding:0 40px; position:relative; z-index:2; }
+
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  display:flex; align-items:center; gap:10px;
+}
+.eyebrow::before{ content:'//'; color:var(--text-faint); }
+
+.section-title{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:clamp(30px, 4.2vw, 46px);
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  margin-top:14px;
+  color:var(--text);
+  text-transform:uppercase;
+}
+.section-title em{
+  font-style:normal;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--cyan);
+}
+
+section{ padding:130px 0; position:relative; z-index:2; }
+
+/* PCB corner-bracket divider used between sections instead of a plain hairline */
+.trace-divider{
+  position:relative;
+  height:1px;
+  background:var(--line);
+}
+.trace-divider::before, .trace-divider::after{
+  content:'';
+  position:absolute;
+  top:-4px;
+  width:9px; height:9px;
+  border:1.5px solid var(--cyan);
+  box-shadow:var(--glow-cyan);
+}
+.trace-divider::before{ left:40px; }
+.trace-divider::after{ right:40px; }
+
+@media (max-width:720px){
+  .wrap{ padding:0 20px; }
+  section{ padding:90px 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+
+@media (hover:none){
+  .cursor-dot, .cursor-ring{ display:none !important; }
+}
