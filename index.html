@@ -81,7 +81,7 @@ section.r .t{margin-left:auto}
 #fb{display:none;position:absolute;left:50%;top:50%;translate:-50% -50%}.nogl #fb{display:block}
 body.loading #hi,body.loading #nav,body.loading #mt,body.loading #aa,body.loading #hint{opacity:0!important}#hi,#nav,#mt,#aa{transition:opacity 1.2s}
 .row.proj{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:1.5rem 3vw;align-items:center;min-height:100svh;padding:5svh 0}
-.proj .pi,.proj .pv,.proj .fr{position:relative;z-index:5;min-width:0}.proj .nm{font-size:clamp(2.6rem,6.4vw,6rem);white-space:nowrap}
+.proj .pi,.proj .pv,.proj .fr{position:relative;z-index:5;min-width:0}.proj .project-links{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.1rem}.project-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.75rem 1.1rem;border:1px solid rgba(14,15,18,.28);color:var(--ink);text-decoration:none;font:600 .68rem/1 var(--disp);letter-spacing:.1em;text-transform:uppercase}.project-link.primary{background:var(--ink);color:var(--bone);border-color:var(--ink)}.project-link:hover{background:var(--ver);border-color:var(--ver);color:#fff}.proj .nm{font-size:clamp(2.6rem,6.4vw,6rem);white-space:nowrap}
 .cat{font:500 .7rem/1.4 var(--disp);font-variation-settings:"wdth" 100;letter-spacing:.22em;text-transform:uppercase;margin:.2rem 0 .6rem}
 .tg span{display:inline-block;border:1px solid rgba(14,15,18,.22);padding:.2rem .6rem;margin:0 .4rem .4rem 0;font:500 .68rem var(--disp);font-variation-settings:"wdth" 100;border-radius:3px}
 .fr{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;border-top:1px solid rgba(14,15,18,.15);padding-top:1.2rem}
@@ -143,7 +143,7 @@ const PAIRS=[{d:"'Bricolage Grotesque'",s:"'Instrument Serif'",v:'"wdth" 75,"ops
 
 /* ===== 2. DOM RENDER + TYPE ===== */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const lnk=p=>Object.entries(p.links||{}).map(([k,v])=>v?`<a href="${v}" target="_blank" rel="noopener">${{live:'Live',repo:'Code',case:'Case study'}[k]||k}</a>`:'').join('');
+const lnk=p=>Object.entries(p.links||{}).map(([k,v])=>v?`<a class="project-link ${k==='live'?'primary':''}" href="${v}" target="_blank" rel="noopener">${{live:'View Project ↗',repo:'GitHub ↗',case:'Case Study ↗'}[k]||k}</a>`:'').join('');
 /* --- original HTML/CSS app prototypes (visual concepts, not working software) --- */
 const SB=(n,it,a)=>`<div class="sb"><b>${n}</b>${it.map((x,i)=>`<span class="${i===a?'on':''}">${x}</span>`).join('')}</div>`,
  SVG=(N,L,vb)=>`<svg viewBox="${vb||'0 0 300 180'}" width="100%">${L.map(([a,b])=>`<line x1="${N[a][1]}" y1="${N[a][2]}" x2="${N[b][1]}" y2="${N[b][2]}" stroke="rgba(150,170,220,.35)" stroke-width=".7"/>`).join('')}${N.map(n=>`<circle cx="${n[1]}" cy="${n[2]}" r="${n[3]?7:4.5}" fill="${n[3]?'#e8481c':'#4f8cff'}"/><text x="${n[1]}" y="${n[2]+(n[3]?17:13)}" fill="#c9ccd3" font-size="7" text-anchor="middle">${n[0]}</text>`).join('')}</svg>`,
@@ -189,7 +189,7 @@ const UI={
     &lt;/main&gt;)
 }</code></div><div class="pn hm"><h6>Live Preview</h6><div style="height:70px;border-radius:6px;background:conic-gradient(from 40deg,#2a2e38,#9aa7c7,#2a2e38,#e8481c33,#2a2e38)"></div></div></div>
   <div class="pn"><h6>Terminal</h6><code class="cd"><span class="c">$ npm run dev</span>  <span class="s">ready</span> in 342ms</code></div></div></div>`};
-$('#shelf').innerHTML=PROJECTS.map((p,i)=>`<article class="row proj" data-form="${p.visual}" data-i="${i}"><div class="pi"><p class="st"><b>${p.number} / 0${PROJECTS.length}</b>${p.meta}</p><h3 class="d nm">${p.name}</h3><p class="cat">${p.category}</p><p class="sm ds">${p.description}</p><p class="tg">${p.tags.map(t=>`<span>${t}</span>`).join('')}</p><p class="st stt">${p.status}</p>${lnk(p)?`<p class="sm">${lnk(p)}</p>`:''}</div><div class="pv">${UI[p.visual]()}</div><div class="fr">${p.features.map(x=>`<div class="ft"><div class="th"><u></u><u></u><u></u></div><b>${x.t}</b><p>${x.d}</p></div>`).join('')}</div></article>`).join('');
+$('#shelf').innerHTML=PROJECTS.map((p,i)=>`<article class="row proj" data-form="${p.visual}" data-i="${i}"><div class="pi"><p class="st"><b>${p.number} / 0${PROJECTS.length}</b>${p.meta}</p><h3 class="d nm">${p.name}</h3><p class="cat">${p.category}</p><p class="sm ds">${p.description}</p><p class="tg">${p.tags.map(t=>`<span>${t}</span>`).join('')}</p><p class="st stt">${p.status}</p>${lnk(p)?`<div class="project-links">${lnk(p)}</div>`:''}</div><div class="pv">${UI[p.visual]()}</div><div class="fr">${p.features.map(x=>`<div class="ft"><div class="th"><u></u><u></u><u></u></div><b>${x.t}</b><p>${x.d}</p></div>`).join('')}</div></article>`).join('');
 $('#pnav').innerHTML='<button data-d="-1">←</button>'+PROJECTS.map((p,i)=>`<b data-i="${i}">${p.number}</b>`).join('')+'<button data-d="1">→</button>';
 function setProj(i){S.proj=i;$$('#pnav b').forEach((e,j)=>e.classList.toggle('on',j===i))}
 $('#pnav').onclick=e=>{const t=e.target;let i=t.dataset.i!==undefined?+t.dataset.i:t.dataset.d?Math.max(0,Math.min(PROJECTS.length-1,(S.proj||0)+ +t.dataset.d)):-1;if(i<0)return;const r=$$('.row')[i];lenis?lenis.scrollTo(r):r.scrollIntoView({behavior:'smooth'})};
