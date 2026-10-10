@@ -143,7 +143,7 @@ const PAIRS=[{d:"'Bricolage Grotesque'",s:"'Instrument Serif'",v:'"wdth" 75,"ops
 
 /* ===== 2. DOM RENDER + TYPE ===== */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const lnk=p=>Object.entries(p.links||{}).map(([k,v])=>v?`<a class="project-link ${k==='live'?'primary':''}" href="${v}" target="_blank" rel="noopener">${{live:'View Project ↗',repo:'GitHub ↗',case:'Case Study ↗'}[k]||k}</a>`:'').join('');
+const lnk=p=>Object.entries(p.links||{}).map(([k,v])=>v?`<a class="project-link ${k==='live'?'primary':''}" href="${v}" target="_blank" rel="noopener noreferrer">${{live:'View Project ↗',repo:'GitHub ↗',case:'Case Study ↗'}[k]||k}</a>`:'').join('');
 /* --- original HTML/CSS app prototypes (visual concepts, not working software) --- */
 const SB=(n,it,a)=>`<div class="sb"><b>${n}</b>${it.map((x,i)=>`<span class="${i===a?'on':''}">${x}</span>`).join('')}</div>`,
  SVG=(N,L,vb)=>`<svg viewBox="${vb||'0 0 300 180'}" width="100%">${L.map(([a,b])=>`<line x1="${N[a][1]}" y1="${N[a][2]}" x2="${N[b][1]}" y2="${N[b][2]}" stroke="rgba(150,170,220,.35)" stroke-width=".7"/>`).join('')}${N.map(n=>`<circle cx="${n[1]}" cy="${n[2]}" r="${n[3]?7:4.5}" fill="${n[3]?'#e8481c':'#4f8cff'}"/><text x="${n[1]}" y="${n[2]+(n[3]?17:13)}" fill="#c9ccd3" font-size="7" text-anchor="middle">${n[0]}</text>`).join('')}</svg>`,
@@ -195,7 +195,7 @@ $('#pnav').innerHTML='<button data-d="-1">←</button>'+PROJECTS.map((p,i)=>`<b 
 function setProj(i){S.proj=i;$$('#pnav b').forEach((e,j)=>e.classList.toggle('on',j===i))}
 $('#pnav').onclick=e=>{const t=e.target;let i=t.dataset.i!==undefined?+t.dataset.i:t.dataset.d?Math.max(0,Math.min(PROJECTS.length-1,(S.proj||0)+ +t.dataset.d)):-1;if(i<0)return;const r=$$('.row')[i];lenis?lenis.scrollTo(r):r.scrollIntoView({behavior:'smooth'})};
 $('#nodes').innerHTML=TECH.map((t,i)=>`<div class="nl" data-i="${i}"><b>${t.n}</b><span>${t.d}</span></div>`).join('')+GROUPS.map(g=>`<div class="gl">${g}</div>`).join('')+STAGES.map(g=>`<div class="sl${g.nx?' nx':''}"><b>${g.n} ${g.t}</b>${g.l.map(x=>`<span>${x}</span>`).join('')}</div>`).join('');
-$('#links').innerHTML=Object.entries(CONFIG.links).map(([k,v])=>`<a href="${v||'#'}">${k}<i>↗</i><span>${{Email:'Get in touch',GitHub:'View projects',LinkedIn:'Connect'}[k]||''}</span></a>`).join('');
+$('#links').innerHTML=Object.entries(CONFIG.links).map(([k,v])=>`<a href="${v||'#'}" ${k==='Email'?'':'target="_blank" rel="noopener noreferrer"'}>${k}<i>↗</i><span>${{Email:'Get in touch',GitHub:'View projects',LinkedIn:'Connect'}[k]||''}</span></a>`).join('');
 function fitAll(){const W=document.documentElement.clientWidth,H=innerHeight;$$('[data-fit]').forEach(e=>{e.style.fontSize='100px';const w=e.getBoundingClientRect().width||1;e.style.fontSize=Math.min(100*e.dataset.fit*W/w,H*.46)+'px'})}
 let pi=0;try{pi=+(localStorage.getItem('pair')||0)}catch(e){}
 async function pair(i){const p=PAIRS[i],r=document.documentElement.style;r.setProperty('--disp',p.d+',Impact,sans-serif');r.setProperty('--ser',p.s+',Georgia,serif');r.setProperty('--dv',p.v);r.setProperty('--dw',p.w);
