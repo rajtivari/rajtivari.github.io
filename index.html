@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eceae4">
+  <meta name="description" content="Raj Tivari — computer science student and developer building thoughtful digital experiences, tools, and interfaces.">
+  <meta property="og:title" content="Raj Tivari — Digital World">
+  <meta property="og:description" content="A portfolio of experiments, software projects, and ideas in progress.">
+  <meta property="og:type" content="website">
+  <title>Raj Tivari — Digital World</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="#home" aria-label="Raj Tivari home">raj<span>tivari</span><i>®</i></a>
+    <nav aria-label="Main navigation">
+      <a href="#work">Work</a><a href="#about">About</a><a href="#stack">Stack</a><a href="#contact" class="nav-contact">Let's talk <span>↗</span></a>
+    </nav>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-meta reveal"><span>PORTFOLIO / 2026</span><span class="status"><b></b> OPEN TO LEARN & BUILD</span></div>
+      <div class="hero-title reveal"><p class="eyebrow">A STUDENT DEVELOPER FROM BENGALURU</p><h1>Ideas into<br><em>digital matter.</em></h1></div>
+      <div class="hero-art" aria-label="Interactive crystal form"><div class="art-halo"></div><canvas id="crystal-canvas"></canvas><div class="art-caption">FORM STUDY Nº 001 <span>DRAG TO EXPLORE</span></div></div>
+      <div class="hero-bottom reveal"><p>I’m Raj — a computer science student exploring the space between <strong>engineering, interaction and visual design.</strong></p><a class="circle-link" href="#work" aria-label="Explore selected work">↓</a><span class="side-note">SCROLL TO EXPLORE&nbsp; ↓</span></div>
+    </section>
+
+    <section class="intro section" id="about">
+      <div class="section-label reveal"><span>01 / ABOUT</span><span>A WORK IN PROGRESS</span></div>
+      <div class="intro-grid"><h2 class="reveal">Curious by nature.<br><em>Builder by practice.</em></h2><div class="intro-copy reveal"><p>I’m studying Computer Science Engineering and building projects to understand how useful software is made — from the first sketch to the final interaction.</p><p>I like clean interfaces, playful motion, and tools that solve real problems. This portfolio is a record of what I’m learning and making along the way.</p><a class="text-link" href="mailto:tivariraj424@gmail.com">Say hello <span>↗</span></a></div></div>
+    </section>
+
+    <section class="work section" id="work">
+      <div class="section-label reveal"><span>02 / SELECTED WORK</span><span>PROTOTYPES & CONCEPTS</span></div>
+      <div class="work-heading reveal"><h2>Things in<br><em>the making.</em></h2><p>Experiments, prototypes and ideas — each one a step forward.</p></div>
+      <div class="project-list">
+        <a class="project reveal" href="https://github.com/rajtivari" target="_blank" rel="noreferrer"><span class="project-no">01</span><div class="project-main"><h3>DevVault</h3><p>A local-first workspace concept for developer notes and code snippets.</p><div class="tags"><span>REACT</span><span>PRODUCTIVITY</span><span>CONCEPT</span></div></div><span class="project-type">WEB APP</span><span class="project-arrow">↗</span></a>
+        <a class="project reveal" href="https://github.com/rajtivari" target="_blank" rel="noreferrer"><span class="project-no">02</span><div class="project-main"><h3>ApexNova</h3><p>A brand and web experience prototype exploring a bold digital identity.</p><div class="tags"><span>UI DESIGN</span><span>PROTOTYPE</span></div></div><span class="project-type">EXPERIMENT</span><span class="project-arrow">↗</span></a>
+        <a class="project reveal" href="https://github.com/rajtivari" target="_blank" rel="noreferrer"><span class="project-no">03</span><div class="project-main"><h3>Portfolio / Crystal</h3><p>An interactive portfolio study built around a changing, crystalline 3D form.</p><div class="tags"><span>THREE.JS</span><span>GSAP</span><span>INTERACTION</span></div></div><span class="project-type">WEB EXPERIENCE</span><span class="project-arrow">↗</span></a>
+      </div>
+      <p class="work-footnote">Selected items are prototypes and learning projects. More work will be added as it becomes ready.</p>
+    </section>
+
+    <section class="stack section" id="stack">
+      <div class="section-label reveal"><span>03 / TOOLKIT</span><span>ALWAYS EVOLVING</span></div>
+      <div class="stack-grid"><h2 class="reveal">Tools for<br><em>making things.</em></h2><div class="skill-groups reveal"><div class="skill-group"><span>01 / FRONTEND</span><p>HTML & CSS <i>↗</i></p><p>JavaScript <i>↗</i></p><p>React <i>↗</i></p></div><div class="skill-group"><span>02 / BUILD & MOTION</span><p>Three.js <i>↗</i></p><p>GSAP <i>↗</i></p><p>Git & GitHub <i>↗</i></p></div><div class="skill-group"><span>03 / CURRENT FOCUS</span><p>Computer Science</p><p>UI engineering</p><p>Creative coding</p></div></div></div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="section-label reveal"><span>04 / CONTACT</span><span>YOUR MOVE</span></div>
+      <p class="eyebrow reveal">HAVE AN IDEA OR JUST WANT TO CONNECT?</p><h2 class="reveal">Let's make<br><em>something matter.</em></h2>
+      <a class="contact-button reveal" href="mailto:tivariraj424@gmail.com">tivariraj424@gmail.com <span>↗</span></a>
+      <div class="socials reveal"><a href="https://github.com/rajtivari" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/rajtivari/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:tivariraj424@gmail.com">Email ↗</a></div>
+    </section>
+  </main>
+  <footer><a class="wordmark" href="#home">raj<span>tivari</span><i>®</i></a><span>DESIGNED & BUILT WHILE LEARNING.</span><a href="#home">BACK TO TOP ↑</a><span>© <span id="year"></span> RAJ TIVARI</span></footer>
+</body>
+</html>
