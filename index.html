@@ -8,7 +8,7 @@
 :root{--bone:#ECEAE4;--ink:#0E0F12;--ver:#E8481C;--dim:rgba(14,15,18,.2);--disp:'Bricolage Grotesque',Impact,sans-serif;--ser:'Instrument Serif',Georgia,serif;--dv:"wdth" 75,"opsz" 96;--dw:800}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bone);overflow-x:clip}html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
-body{color:var(--ink);font:400 1.1rem/1.45 var(--ser);overflow-x:clip;-webkit-font-smoothing:antialiased;touch-action:pan-y;user-select:none;-webkit-user-select:none}a{color:inherit}
+body{color:var(--ink);font:400 1.1rem/1.45 var(--ser);overflow-x:clip;-webkit-font-smoothing:antialiased;touch-action:pan-y}body,body *{ -webkit-tap-highlight-color:transparent}a{color:inherit}::selection{background:var(--ver);color:#fff}
 /* atmosphere: soft light pools, faint crystal silhouettes, grain */
 #bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 40%,#F7F5F0,transparent 72%),radial-gradient(70% 55% at 100% 100%,rgba(14,15,18,.1),transparent 70%),radial-gradient(45% 35% at 0 0,rgba(232,72,28,.05),transparent 70%),var(--bone)}
 .sil{position:fixed;z-index:-1;background:rgba(14,15,18,.04);pointer-events:none;translate:var(--tx,0) var(--ty,0)}
@@ -63,8 +63,9 @@ section.r .t{margin-left:auto}
 @media(max-width:760px){
  section{padding:12svh 6vw;justify-content:flex-start}#hero{padding:0}.o{-webkit-text-stroke-width:1px}
  .row{min-height:66svh;justify-content:flex-start;padding-top:4svh}.big{max-width:none}
+ .row.proj{grid-template-columns:minmax(0,1fr);gap:1.25rem;min-height:auto;padding:10svh 0}.proj .pi{order:0}.proj .pv{order:1}.proj .fr{order:2}.proj .project-links a{min-height:44px;display:inline-flex;align-items:center;padding:.55rem .8rem}.live-shot{max-width:100%;overflow:hidden}.dv-dashboard-preview{grid-template-columns:1fr!important}.dv-side{display:none!important}.dv-main{min-width:0}.dv-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.dv-top{gap:.5rem;flex-wrap:wrap}.dv-search{max-width:100%;overflow:hidden}.fr{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  #nav i{display:none}#nav{right:3vw}#mt{left:5vw}.hr{right:14vw}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}html.lenis,html.lenis body{scroll-behavior:auto!important}}
 .hw,.h{display:none!important} /* replaced by the 3D cylinder word */
 #nodes{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
 .nl,.sl{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;transition:opacity .45s,color .3s;font:500 .95rem/1.2 var(--disp);font-variation-settings:"wdth" 100;will-change:transform}
