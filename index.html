@@ -378,7 +378,7 @@ function initGL(){
   pick(cx,cy){grp.updateMatrixWorld();let b=-1,bd=3600;for(let i=0;i<N;i++){pv.set(P[i*3],P[i*3+1],P[i*3+2]).applyMatrix4(grp.matrixWorld).project(cam);const d=((pv.x*.5+.5)*W-cx)**2+((-pv.y*.5+.5)*H-cy)**2;if(d<bd){bd=d;b=i}}return b},
   toggle(i,T){dEnd[i]=dEnd[i]>T?0:T+5},
   frame(T,ms){const dt=Math.min(ms/1000,.05)||.016,k=1-Math.exp(-dt*3);U.uT.value=T;
-   const[px,py,ps_,pmy]=S.pose,bs=asp<.7?.85:asp<1?.9:asp<1.4?1:1.05,xs=Math.min(1,asp/1.6)*.6;
+   const[px,py,ps_,pmy]=S.pose,bs=asp<.7?.64:asp<1?.76:asp<1.4?.94:1.05,xs=Math.min(1,asp/1.6)*.6;
    // lighting follows the cursor
    U.uL.value.x+=((S.mx*1.6+.5)-U.uL.value.x)*k;U.uL.value.y+=((1.2-S.my)-U.uL.value.y)*k;
    // layered parallax: particles .05, distant .15, main .30, foreground .50
@@ -393,14 +393,14 @@ function initGL(){
    if(S.go&&uh.value>.96&&drawn!==wd){drawn=wd;drawWord(wd)}
    ringS+=(S.sy*.0015-ringS)*k;tm.uniforms.uRot.value=((((RM?0:T*.1)+ringS+S.dr*.6+S.mx*.08)%6.2832)+6.2832)%6.2832;tm.uniforms.uBy.value=asp<1?-.2:-.12;
    // main crystal: chase targets (assembly staggers by per-facet rate), idle drift, hover + detach
-   const tg=target(S.form,T),sz=mob?1.05:1.15,ra=RM?9:1,gr=S.form==='growth';lenK+=((({halo:.7,knowledge:.5,system:.5,flow:.5,codegraph:.5,sync:.7,loose:.7,growth:.8})[S.form]||1)-lenK)*k;
+   const tg=target(S.form,T),sz=mob?.86:1.15,ra=RM?9:1,gr=S.form==='growth';lenK+=((({halo:.7,knowledge:.5,system:.5,flow:.5,codegraph:.5,sync:.7,loose:.7,growth:.8})[S.form]||1)-lenK)*k;
    for(let i=0;i<N;i++){const q=rs[i],j=i*3,kk=S.prog>=TH[i]?1-Math.exp(-dt*(.8+q[2])*ra):0,det=dEnd[i]>T;gvc[i]+=((gr?ss(GR[i][3]-.08,GR[i][3],S.grow*1.04)*GR[i][4]:1)-gvc[i])*k;
     for(let c=0;c<3;c++){P[j+c]+=kk?(tg[j+c]-P[j+c])*kk:-P[j+c]*dt*.05;off[j+c]+=((det?bn[i].getComponent(c)*1.3+(q[c]-.5)*.6:0)-off[j+c])*k}
     const am=learn.has(i)?(S.form==='orbGap'?.1:.05):.02;
     place(LM,i,P[j]+off[j]+Math.sin(T*.6+i)*am,P[j+1]+off[j+1]+Math.cos(T*.5+i*1.3)*am,P[j+2]+off[j+2],fs[i]*sz*(i===S.hov?1.35:1)*gvc[i]*(learn.has(i)?1.5:1),0,rollA[i],ln[i]*lenK,dvec[i])}
    LM.up();
    dg.rotation.y=T*.01;for(let i=0;i<ND;i++){const a=dd[i];place(LD,i,a[0]+Math.sin(T*.05+i)*.3,a[1]+Math.cos(T*.06+i)*.2,a[2],(.8+.7*a[3])*sz,T*.02+a[4]*6,a[3]*2-1,1.6)}LD.up();
-   fgA+=(S.fgA-fgA)*k;mFg.uniforms.uO.value=.9*fgA*(1-S.lc);mDist.uniforms.uO.value+=(((S.sec==='stack'||S.sec==='learning')?.3:1)*(1-.8*S.lc)-mDist.uniforms.uO.value)*k;
+   fgA+=(S.fgA-fgA)*k;mFg.uniforms.uO.value=(mob?.58:.9)*fgA*(1-S.lc);mDist.uniforms.uO.value+=(((S.sec==='stack'||S.sec==='learning')?.3:1)*(1-.8*S.lc)-mDist.uniforms.uO.value)*k;
    for(let i=0;i<NF;i++){const a=fb[i];place(LF,i,wrap(a[0]+S.sy*.0007*(.5+a[2])+T*.015*a[1]),a[3]+Math.sin(T*.1+i)*.15,a[4],(.22+.16*a[2])*sz,T*.03+i,a[2]*2-1,1.6)}LF.up();
    // STACK constellation, camera drift, JOURNEY stage labels
    nsv+=((S.sec==='stack'?1:0)-nsv)*(1-Math.exp(-dt*2));ng.visible=nsv>.01;
